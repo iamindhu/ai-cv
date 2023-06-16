@@ -6,8 +6,8 @@ var minioClient = new Minio.Client({
     endPoint: '127.0.0.1',
     port: 9000,
     useSSL: false,
-    accessKey: 'EitPADwoAUvkzhs6',
-    secretKey: 'g82ahUIxSAhtIJeCoLWTV1YrONFpjTop'
+    accessKey: 'dnyEzXvlcu1jzcy9viOt',
+    secretKey: 'utCBA7Pi0F6LLjD13FT9hve0qO22Uhpb48mIi591'
 });
 // console.log("1");
 
