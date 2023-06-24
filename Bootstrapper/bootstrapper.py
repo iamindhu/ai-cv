@@ -5,7 +5,6 @@ import threading
 def run(path):
     # os.system("cd " + path + "|"+ "npm install"+"|" + "ls" )
     # subprocess.call(["cd .. | ls"], shell=True)
-    
     subprocess.check_call("npm install", cwd=path, shell=True)
     subprocess.check_call("npm start", cwd=path, shell=True)
     # os.system("npm install")
