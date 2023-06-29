@@ -3,6 +3,8 @@ import numpy as np
 # import matplotlib.pyplot as plt
 
 
-def resize(image): 
-    resize_image = image
-    return resize_image
+def resize(image, x=224, y=224):
+    # Resize to new pixel size
+    new_img = cv2.resize(image, (x,y))
+    
+    return new_img
