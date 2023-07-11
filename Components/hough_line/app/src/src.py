@@ -2,9 +2,18 @@ import cv2
 import numpy as np
 
 def hough_line_transform(image, threshold=100, min_line_length=50, max_line_gap=10):
-    # Convert the image to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
+    
+    # If image does not have 2 channels (it is not grayscale)
+    if image.ndim != 2:
+        try:
+            # Convert colored image to grayscale
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        except Exception as e:
+            # Return exception if image is neither grayscale nor colored
+            return e
+    else:
+        gray = image.copy()
+    
     # Apply Canny edge detection
     edges = cv2.Canny(gray, 50, 150, apertureSize=3)
 

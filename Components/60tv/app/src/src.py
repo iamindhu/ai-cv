@@ -3,8 +3,17 @@ import numpy as np
 # import matplotlib.pyplot as plt
 
 def tv_60s(image): 
+    # If image does not have 2 channels (it is not grayscale)
+    if image.ndim != 2:
+        try:
+            # Convert colored image to grayscale
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        except Exception as e:
+            # Return exception if image is neither grayscale nor colored
+            return e
+
     height, width = image.shape[:2]
-    tv60 = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    tv60 = image.copy()
     thresh = 0.8 # creating threshold. This means noise will be added to 80% pixels
     for i in range(height):
         for j in range(width):
