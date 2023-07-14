@@ -15,7 +15,16 @@ def emboss(image):
                         [-1, 0, 1],
                         [0, 1, 1]])
     # you can generate kernels for embossing top as well
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # If image does not have 2 channels (it is not grayscale)
+    if image.ndim != 2:
+        try:
+            # Convert colored image to grayscale
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        except Exception as e:
+            # Return exception if image is neither grayscale nor colored
+            return e
+    else:
+        gray = image.copy()
     output1 = cv2.add(cv2.filter2D(gray, -1, kernel1), y) # emboss on bottom left side
     output2 = cv2.add(cv2.filter2D(gray, -1, kernel2), y) # emboss on bottom right side
     for i in range(height):

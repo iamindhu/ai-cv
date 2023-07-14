@@ -2,8 +2,17 @@ import cv2
 import numpy as np
 
 def texture_analysis(image):
-    # Convert the image to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    
+    # If image does not have 2 channels (it is not grayscale)
+    if image.ndim != 2:
+        try:
+            # Convert colored image to grayscale
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        except Exception as e:
+            # Return exception if image is neither grayscale nor colored
+            return e
+    else:
+        gray = image.copy()
 
     # Apply LBP
     radius = 3

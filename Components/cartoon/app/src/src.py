@@ -4,6 +4,15 @@ import numpy as np
 
 
 def cartoonize(image): 
+    # If image does not have 3 channels (BGR)
+    if image.ndim != 3 or image.shape[2] != 3:
+        try:
+            # Convert to BGR
+            image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+        except Exception as e:
+            # Return exception if image is neither grayscale nor colored
+            return e
+    
     edges1 = cv2.bitwise_not(cv2.Canny(image, 100, 200)) # for thin edges and inverting the mask obatined
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.medianBlur(gray, 5) # applying median blur with kernel size of 5

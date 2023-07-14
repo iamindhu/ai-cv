@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 # import matplotlib.pyplot as plt
 
 
-def dotted(image):
+def dotted(image, dot_dist=3):
     
     img_size = (image.shape[1], image.shape[0])
     
@@ -15,7 +15,7 @@ def dotted(image):
     
     pixels = cv_to_pix(image)
     # Choose the pixelization length
-    pixelization_length = 3
+    pixelization_length = dot_dist
     
     # Define the pixelize and mask image
     pixelize_image = Image.new('RGBA', img_size)
