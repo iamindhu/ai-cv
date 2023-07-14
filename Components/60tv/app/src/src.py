@@ -2,7 +2,9 @@ import cv2
 import numpy as np 
 # import matplotlib.pyplot as plt
 
-def tv_60s(image): 
+def tv_60s(image, thresh=0.8): 
+    # Default threshold = 0.8 i.e. noise will be added to 80% pixels
+
     # If image does not have 2 channels (it is not grayscale)
     if image.ndim != 2:
         try:
@@ -14,7 +16,7 @@ def tv_60s(image):
 
     height, width = image.shape[:2]
     tv60 = image.copy()
-    thresh = 0.8 # creating threshold. This means noise will be added to 80% pixels
+     
     for i in range(height):
         for j in range(width):
             if np.random.rand() <= thresh:

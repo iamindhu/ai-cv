@@ -2,7 +2,7 @@ import cv2
 import numpy as np 
 # import matplotlib.pyplot as plt
 
-def adaptive_threshold_gaussian(image): 
+def adaptive_threshold_gaussian(image, blocksize=199, const=5): 
 
       
    # cv2.cvtColor is applied over the
@@ -20,6 +20,6 @@ def adaptive_threshold_gaussian(image):
    # applying different thresholding  on the input image
    
    adaptive_threshold_gaussian_image = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-                                             cv2.THRESH_BINARY, 199, 5)
+                                             cv2.THRESH_BINARY, blocksize, const)
    
    return adaptive_threshold_gaussian_image

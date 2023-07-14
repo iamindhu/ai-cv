@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def extract_contours(image):
+def extract_contours(image, color=(0,255,0)):
     
     # If image does not have 2 channels (it is not grayscale)
     if image.ndim != 2:
@@ -22,6 +22,6 @@ def extract_contours(image):
 
     # Draw contours on a blank canvas
     canvas = np.zeros_like(image)
-    cv2.drawContours(canvas, contours, -1, (0, 255, 0), 1)
+    cv2.drawContours(canvas, contours, -1, color, 1)
 
     return canvas

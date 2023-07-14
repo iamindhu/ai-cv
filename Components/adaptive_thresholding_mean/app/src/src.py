@@ -2,7 +2,7 @@ import cv2
 import numpy as np 
 # import matplotlib.pyplot as plt
 
-def adaptive_thresholding_mean(image): 
+def adaptive_thresholding_mean(image, blocksize=199, const=5): 
    # cv2.cvtColor is applied over the
    # image input with applied parameters
    
@@ -16,7 +16,7 @@ def adaptive_thresholding_mean(image):
            return e
 
    # applying different thresholding the input image
-   adaptive_thresholding_mean_image = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY, 199, 5)
+   adaptive_thresholding_mean_image = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY, blocksize, const)
 
 
    return adaptive_thresholding_mean_image
